@@ -1,0 +1,105 @@
+h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+  font-size: 40px;
+}
+
+.todos__container {
+  margin-bottom: 100px;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  position: relative;
+  margin: 5% auto;
+}
+
+.input__box {
+  width: 100%;
+  border: none;
+  border-radius: 20px;
+  padding: 2% 3%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.44);
+  font-size: 25px;
+  background-color: rgb(228, 227, 226);
+}
+
+.input__sumbit {
+  width: 7%;
+  height: 70%;
+  position: absolute;
+  margin: 12px;
+  border-radius: 100px;
+  right: 0px;
+  border: none;
+  background-color: rgb(1, 61, 99);
+  color: white;
+  font-size: 25px;
+  box-shadow: 0 0 10px black;
+  transition: 0.2s all;
+}
+
+.input__sumbit:hover {
+  box-shadow: 0 0 5px black;
+  background-color: rgb(47, 83, 146);
+}
+
+.todo__single {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  width: 50%;
+  height: 80px;
+  background-color: rgb(242, 242, 242);
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 25px;
+  padding: 20px;
+  box-shadow: 0 0 10px grey;
+}
+
+.todo__single--important {
+  background: rgba(255, 0, 0, 0.55);
+}
+
+.todo__single--text {
+  flex: 1;
+  font-size: 20px;
+  color: black;
+  overflow: auto;
+}
+
+.todo__single--done {
+  color: rgb(8, 193, 8);
+}
+
+.icon {
+  cursor: pointer;
+  color: black;
+  font-size: 25px;
+  transition: 0.2s;
+}
+
+.icon:hover {
+  color: rgb(47, 83, 146);
+  font-size: 30px;
+}
+
+@media (max-width: 1200px) {
+  .todo__single {
+    width: 60%;
+  }
+}
+
+@media (max-width: 700px) {
+  .input {
+    width: 95%;
+  }
+
+  .todo__single {
+    width: 80%;
+  }
+}
