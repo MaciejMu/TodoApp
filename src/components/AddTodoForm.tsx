@@ -1,13 +1,7 @@
-import React from "react";
+import TodoForm from "../types/AddTodoForm";
 import "./style.css";
 
-interface Props {
-  todo: string;
-  setTodo: React.Dispatch<React.SetStateAction<string>>;
-  handleAdd: (e: React.SyntheticEvent) => void;
-}
-
-export default function Input({ todo, setTodo, handleAdd }: Props) {
+const AddTodoForm = ({ todo, handleChange, handleAdd }: TodoForm) => {
   return (
     <form className="input" onSubmit={handleAdd}>
       <input
@@ -15,9 +9,11 @@ export default function Input({ todo, setTodo, handleAdd }: Props) {
         type="input"
         placeholder="Enter a task"
         value={todo}
-        onChange={(e) => setTodo(e.target.value)}
+        onChange={handleChange}
       ></input>
       <button className="input__sumbit">+</button>
     </form>
   );
-}
+};
+
+export default AddTodoForm;

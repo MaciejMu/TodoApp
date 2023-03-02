@@ -1,5 +1,5 @@
 import React from "react";
-import Todo from "../module";
+import Todo from "../types/Todo";
 import { VscTrash } from "react-icons/vsc";
 import { AiOutlineExclamation } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
