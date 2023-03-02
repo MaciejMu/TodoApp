@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import Input from "./components/Input";
+import AddTodoForm from "./components/AddTodoForm";
 import { nanoid } from "nanoid";
 import Todo from "./module";
 import TodosList from "./components/TodosList";
 import ReactSwitch from "react-switch";
-// import { createContext } from "vm";
 
 export const ThemeContext = React.createContext("light");
 
@@ -17,15 +16,15 @@ function App() {
 
   const [theme, setTheme] = useState<string>("light");
 
-  function toggleTheme() {
+  const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
-  }
+  };
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  function handleAdd(e: React.SyntheticEvent) {
+  const handleAdd = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     if (todo) {
@@ -35,7 +34,7 @@ function App() {
       ]);
       setTodo("");
     }
-  }
+  };
 
   return (
     <ThemeContext.Provider value={theme}>
@@ -43,12 +42,9 @@ function App() {
         <h1>Todo List</h1>
         <div className="theme__switch">
           <p>Dark mode</p>
-          <ReactSwitch
-            onChange={() => toggleTheme()}
-            checked={theme === "light"}
-          />
+          <ReactSwitch onChange={toggleTheme} checked={theme === "light"} />
         </div>
-        <Input todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
+        <AddTodoForm todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
         <TodosList todos={todos} setTodos={setTodos} />
       </div>
     </ThemeContext.Provider>

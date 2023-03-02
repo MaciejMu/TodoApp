@@ -25,22 +25,22 @@ export default function SingleTodo({ todo, todos, setTodos }: Props) {
     });
   }
 
-  function handleDelete(id: string) {
+  const handleDelete = (id: string) => {
     setTodos(todos.filter((t) => t.id !== id));
-  }
+  };
 
-  function handleDone(id: string) {
+  const handleDone = (id: string) => {
     setTodos(todos.map((t) => (t.id === id ? { ...t, isDone: !t.isDone } : t)));
-  }
+  };
 
-  function handleImportant(id: string) {
+  const handleImportant = (id: string) => {
     setTodos(
       todos.map((t) =>
         t.id === id ? { ...t, isImportant: !t.isImportant } : t
       )
     );
     sortImportant();
-  }
+  };
 
   return (
     <form
