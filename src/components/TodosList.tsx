@@ -4,14 +4,27 @@ import SingleTodo from "./SingleTodo";
 
 interface Props {
   todos: Todo[];
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  handleDelete: (id: string) => void;
+  handleDone: (id: string) => void;
+  handleImportant: (id: string) => void;
 }
 
-export default function TodosList({ todos, setTodos }: Props) {
+export default function TodosList({
+  todos,
+  handleDelete,
+  handleDone,
+  handleImportant,
+}: Props) {
   return (
     <div className="todos__container">
       {todos.map((t) => (
-        <SingleTodo todo={t} todos={todos} key={t.id} setTodos={setTodos} />
+        <SingleTodo
+          todo={t}
+          key={t.id}
+          handleDelete={handleDelete}
+          handleDone={handleDone}
+          handleImportant={handleImportant}
+        />
       ))}
     </div>
   );

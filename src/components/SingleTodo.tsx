@@ -1,4 +1,3 @@
-import React from "react";
 import Todo from "../types/Todo";
 import { VscTrash } from "react-icons/vsc";
 import { AiOutlineExclamation } from "react-icons/ai";
@@ -6,42 +5,17 @@ import { MdDone } from "react-icons/md";
 
 interface Props {
   todo: Todo;
-  todos: Todo[];
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  handleDelete: (id: string) => void;
+  handleDone: (id: string) => void;
+  handleImportant: (id: string) => void;
 }
 
-export default function SingleTodo({ todo, todos, setTodos }: Props) {
-  function sortImportant() {
-    setTodos((oldTodos) => {
-      const newArray: Todo[] = [];
-      for (let i = 0; i < oldTodos.length; i++) {
-        if (oldTodos[i].isImportant) {
-          newArray.unshift(oldTodos[i]);
-        } else {
-          newArray.push(oldTodos[i]);
-        }
-      }
-      return newArray;
-    });
-  }
-
-  const handleDelete = (id: string) => {
-    setTodos(todos.filter((t) => t.id !== id));
-  };
-
-  const handleDone = (id: string) => {
-    setTodos(todos.map((t) => (t.id === id ? { ...t, isDone: !t.isDone } : t)));
-  };
-
-  const handleImportant = (id: string) => {
-    setTodos(
-      todos.map((t) =>
-        t.id === id ? { ...t, isImportant: !t.isImportant } : t
-      )
-    );
-    sortImportant();
-  };
-
+export default function SingleTodo({
+  todo,
+  handleDone,
+  handleDelete,
+  handleImportant,
+}: Props) {
   return (
     <form
       className={
