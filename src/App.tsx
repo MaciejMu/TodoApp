@@ -74,7 +74,6 @@ function App() {
           handleDelete={handleDelete}
           handleDone={handleDone}
           handleImportant={handleImportant}
-          // handleImportant={handleImportant}
         />
       </div>
     </ThemeContext.Provider>

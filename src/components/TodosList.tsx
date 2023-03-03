@@ -1,12 +1,10 @@
 import React from "react";
 import Todo from "../types/Todo";
+import TodoOptions from "../types/TodoOptions";
 import SingleTodo from "./SingleTodo";
 
-interface Props {
+interface Props extends TodoOptions {
   todos: Todo[];
-  handleDelete: (id: string) => void;
-  handleDone: (id: string) => void;
-  handleImportant: (id: string) => void;
 }
 
 export default function TodosList({

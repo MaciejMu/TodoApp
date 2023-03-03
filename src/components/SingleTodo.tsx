@@ -2,12 +2,10 @@ import Todo from "../types/Todo";
 import { VscTrash } from "react-icons/vsc";
 import { AiOutlineExclamation } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
+import TodoOptions from "../types/TodoOptions";
 
-interface Props {
+interface Props extends TodoOptions {
   todo: Todo;
-  handleDelete: (id: string) => void;
-  handleDone: (id: string) => void;
-  handleImportant: (id: string) => void;
 }
 
 export default function SingleTodo({
