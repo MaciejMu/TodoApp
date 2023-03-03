@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import AddTodoForm from "./components/AddTodoForm";
 import { nanoid } from "nanoid";
@@ -6,7 +6,7 @@ import Todo from "./types/Todo";
 import TodosList from "./components/TodosList";
 import ReactSwitch from "react-switch";
 
-export const ThemeContext = React.createContext("light");
+export const ThemeContext = createContext("light");
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>(() =>
@@ -23,25 +23,26 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  const sort = () => {
+    setTodos((oldTodos) => {
+      const newArray: Todo[] = [];
+      for (let i = 0; i < oldTodos.length; i++) {
+        if (oldTodos[i].isImportant) {
+          newArray.unshift(oldTodos[i]);
+        } else {
+          newArray.push(oldTodos[i]);
+        }
+      }
+      return newArray;
+    });
+  };
+
   const handleAdd = (newTodo: string) => {
     if (newTodo)
-      setTodos((oldTodos) => {
-        const newArray: Todo[] = [];
-        for (let i = 0; i < oldTodos.length; i++) {
-          if (oldTodos[i].isImportant) {
-            newArray.unshift(oldTodos[i]);
-          } else {
-            newArray.push(oldTodos[i]);
-          }
-        }
-        newArray.push({
-          id: nanoid(),
-          todo: newTodo,
-          isDone: false,
-          isImportant: false,
-        });
-        return newArray;
-      });
+      setTodos([
+        ...todos,
+        { id: nanoid(), todo: newTodo, isDone: false, isImportant: false },
+      ]);
   };
 
   const handleDelete = (id: string) => {
@@ -58,6 +59,7 @@ function App() {
         t.id === id ? { ...t, isImportant: !t.isImportant } : t
       )
     );
+    sort();
   };
 
   return (
@@ -81,3 +83,24 @@ function App() {
 }
 
 export default App;
+
+// const handleAdd = (newTodo: string) => {
+//   if (newTodo)
+//   setTodos((oldTodos) => {
+//     const newArray: Todo[] = [];
+//     for (let i = 0; i < oldTodos.length; i++) {
+//       if (oldTodos[i].isImportant) {
+//         newArray.unshift(oldTodos[i]);
+//       } else {
+//         newArray.push(oldTodos[i]);
+//       }
+//     }
+//       newArray.push({
+//         id: nanoid(),
+//         todo: newTodo,
+//         isDone: false,
+//         isImportant: false,
+//       });
+//     return newArray;
+//   });
+// };
