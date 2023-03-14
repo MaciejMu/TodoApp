@@ -174,7 +174,7 @@ h1 {
   }
 }
 
-@media (media prefers-color-scheme:dark) {
+@media (prefers-color-scheme: dark) {
 
   * {
   background: rgb(0, 0, 0);
