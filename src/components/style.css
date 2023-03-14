@@ -114,6 +114,7 @@ h1 {
 .todo__single--important {
   background: rgba(255, 0, 0, 0.55);
 }
+
 #dark .todo__single--important {
   background: rgba(145, 0, 0, 0.55);
 }
@@ -171,4 +172,48 @@ h1 {
   .todo__single {
     width: 80%;
   }
+}
+
+@media (media prefers-color-scheme) {
+
+  * {
+  background: rgb(0, 0, 0);
+  }
+  
+  h1 {
+  color: white;
+}
+  
+  
+ .theme__switch {
+  color: white;
+}
+  
+ .input__sumbit:hover {
+  box-shadow: 0 0 5px black;
+  background-color: rgb(117, 180, 244);
+}
+  
+   .todo__single {
+  background-color: rgb(39, 39, 39);
+}
+  
+   .todo__single--important {
+  background: rgba(145, 0, 0, 0.55);
+}
+  
+ .todo__single--text {
+  color: white;
+}
+  
+.todo__single--done {
+  color: rgb(11, 111, 11);
+} 
+  
+.icon {
+  color: white;
+}
+
+.icon:hover {
+  color: rgb(117, 180, 244);
 }
