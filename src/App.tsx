@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import "./App.css";
 import TodosList from "./components/TodosList";
 import ReactSwitch from "react-switch";
 
